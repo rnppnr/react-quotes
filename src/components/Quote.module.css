@@ -1,0 +1,23 @@
+.buttonContainer {
+  position: relative;
+  background: transparent;
+  height: 2rem;
+}
+
+.buttonContainer > i {
+  position: absolute;
+  cursor: pointer;
+  right: 0;
+}
+
+.quote {
+  background: #ccc;
+  background: #484a47;
+  border-radius: 0.5rem;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 25rem;
+  padding: 0 1rem;
+}
