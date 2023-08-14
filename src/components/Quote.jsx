@@ -7,12 +7,15 @@ import styles from "./Quote.module.css";
 
 function Quote() {
   const [quote, setQuote] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   function handleOnClick() {
     async function fetchData() {
+      setIsLoading(true);
       await fetch(import.meta.env.VITE_API_URL)
         .then((res) => res.json())
         .then((data) => setQuote(data));
+      setIsLoading(false);
     }
     fetchData();
   }
@@ -24,16 +27,21 @@ function Quote() {
   return (
     <>
       <div className={styles.buttonContainer}>
-        <i
-          className="fa fa-refresh"
-          aria-hidden="true"
-          onClick={handleOnClick}
-        ></i>
+        {!isLoading && (
+          <i
+            className="fa fa-refresh"
+            aria-hidden="true"
+            onClick={handleOnClick}
+          ></i>
+        )}
       </div>
-      <div className={styles.quote}>
-        <QuoteText quote={quote} />
-        <QuoteAuthor quote={quote} />
-      </div>
+      {isLoading && <div className={styles.loading}>Loading...</div>}
+      {!isLoading && (
+        <div className={styles.quote}>
+          <QuoteText quote={quote} />
+          <QuoteAuthor quote={quote} />
+        </div>
+      )}
     </>
   );
 }

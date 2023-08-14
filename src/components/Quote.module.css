@@ -10,7 +10,8 @@
   right: 0;
 }
 
-.quote {
+.quote,
+.loading {
   background: #ccc;
   background: #484a47;
   border-radius: 0.5rem;
@@ -19,5 +20,6 @@
   flex-direction: column;
   justify-content: center;
   min-height: 25rem;
+  min-width: 25rem;
   padding: 0 1rem;
 }
